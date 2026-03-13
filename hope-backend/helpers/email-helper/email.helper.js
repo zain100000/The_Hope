@@ -64,10 +64,7 @@ exports.sendEmail = async ({ to, subject, html }) => {
  * @param {string} [title="THE HOPE - Mental Health & Wellness"] - Document title
  * @returns {string} Complete HTML email
  */
-exports.getEmailTemplate = (
-  content,
-  title = "THE HOPE",
-) => `
+exports.getEmailTemplate = (content, title = "THE HOPE") => `
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -352,7 +349,7 @@ function getFrontendUrl(role) {
   const normalizedRole = role?.toUpperCase();
 
   switch (normalizedRole) {
-    case "SUPERADMIN":    
+    case "SUPERADMIN":
       if (!process.env.FRONTEND_URL) {
         throw new Error("FRONTEND_URL environment variable is not defined");
       }
@@ -416,5 +413,54 @@ exports.sendPasswordResetEmail = async (toEmail, resetToken, role) => {
     to: toEmail,
     subject: "THE HOPE • Reset Your Password",
     html: exports.getEmailTemplate(content, "Password Reset - THE HOPE"),
+  });
+};
+
+/**
+ * Send 6-digit OTP for email verification with a calming, supportive theme
+ * @async
+ * @param {string} toEmail      - User's email address
+ * @param {string} userName     - User's display name
+ * @param {string} otp          - 6-digit plain OTP code
+ * @returns {Promise<boolean>}  Success status
+ */
+exports.sendEmailVerificationOtp = async (toEmail, userName, otp) => {
+  const content = `
+    <div style="text-align:center; max-width:520px; margin:0 auto;">
+      <h2 style="color:#1e4a6d; font-size:32px; margin-bottom:16px; font-weight:700; font-family:Quicksand, sans-serif;">
+        Verify Your Account
+      </h2>
+      
+      <p style="color:#4a6b8a; line-height:1.8; margin-bottom:24px; font-size:17px;">
+        Hello ${userName || "there"},<br><br>
+        Welcome to <strong>THE HOPE</strong>! We're so glad you're here. 
+        Please use the verification code below to complete your sign-up and begin your wellness journey.
+      </p>
+      
+      <div class="wellness-box" style="margin:40px 0; border: 2px dashed #A8D8EA; background: #f0f7ff;">
+        <h1 style="font-size:48px; letter-spacing:12px; color:#4A90E2; margin:0; font-weight:900; font-family:'Inter', sans-serif;">
+          ${otp}
+        </h1>
+      </div>
+
+      <p style="color:#6b7f8e; font-size:15px; line-height:1.7; margin:30px 0;">
+        This code is valid for <strong style="color:#4A90E2;">10 minutes</strong>.
+      </p>
+
+      <div class="quote-box">
+        "The journey of a thousand miles begins with a single step."
+      </div>
+      
+      <p style="color:#1e293b; font-size:16px; margin-top:40px; font-weight:500;">
+        With care,<br>
+        The THE_HOPE Team
+      </p>
+    </div>
+  `;
+
+  return await exports.sendEmail({
+    to: toEmail,
+    subject: "THE HOPE • Your Verification Code",
+    html: exports.getEmailTemplate(content, "Email Verification - THE HOPE"),
   });
 };

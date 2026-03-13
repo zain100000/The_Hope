@@ -62,12 +62,14 @@ app.get("/api/health", (req, res) => {
 // ==================================================
 const superAdminRoute = require("./routes/super-admin-route/super-admin.route");
 const sharedPasswordResetRoute = require("./routes/shared-route/shared-password.reset.route");
+const userRoute = require("./routes/user-route/user.route");
 
 // ==================================================
 // API Routes
 // ==================================================
 app.use("/api/super-admin", superAdminRoute);
 app.use("/api/auth", sharedPasswordResetRoute);
+app.use("/api/user", userRoute);
 
 // ==================================================
 // MongoDB Connection + Server Start

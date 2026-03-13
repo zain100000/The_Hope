@@ -1,4 +1,3 @@
-
 /**
  * @fileoverview Encrypted JWT authentication middleware
  * @module middlewares/encryptedAuthMiddleware
@@ -8,6 +7,7 @@ const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 const rateLimit = require("express-rate-limit");
 const SuperAdmin = require("../../models/super-admin-model/super-admin.model");
+const User = require("../../models/user-model/user.model");
 
 // Validate required environment variables
 if (!process.env.JWT_SECRET) {
@@ -134,8 +134,10 @@ exports.encryptedAuthMiddleware = async (req, res, next) => {
     switch (decoded.role) {
       case "SUPERADMIN":
         Model = SuperAdmin;
-        break;            
-        break;      
+        break;
+      case "USER":
+        Model = User;
+        break;
       default:
         return res.status(401).json({
           success: false,
