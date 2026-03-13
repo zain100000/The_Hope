@@ -5,14 +5,8 @@
 
 const mongoose = require("mongoose");
 
-/**
- * Schema representing a user's daily mood entry
- */
 const moodTrackingSchema = new mongoose.Schema(
   {
-    // ─────────────────────────────────────────────
-    // User Reference
-    // ─────────────────────────────────────────────
     userId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
@@ -20,9 +14,7 @@ const moodTrackingSchema = new mongoose.Schema(
       index: true,
     },
 
-    // ─────────────────────────────────────────────
-    // Mood Type
-    // ─────────────────────────────────────────────
+    // Core Data
     moodType: {
       type: String,
       enum: [
@@ -39,10 +31,6 @@ const moodTrackingSchema = new mongoose.Schema(
       required: true,
     },
 
-    // ─────────────────────────────────────────────
-    // Mood Intensity
-    // Scale: 1 (very low) → 10 (very strong)
-    // ─────────────────────────────────────────────
     moodIntensity: {
       type: Number,
       min: 1,
@@ -51,38 +39,53 @@ const moodTrackingSchema = new mongoose.Schema(
     },
 
     // ─────────────────────────────────────────────
-    // Optional Mood Notes
+    // NEW: Physical & Contextual Factors
+    // ─────────────────────────────────────────────
+    energyLevel: {
+      type: Number, // 1 (drained) to 10 (high energy)
+      min: 1,
+      max: 10,
+    },
+
+    sleepHours: {
+      type: Number,
+      min: 0,
+      max: 24,
+    },
+
+    weatherCondition: {
+      type: String, // e.g., "Sunny", "Cloudy", "Rainy"
+      default: null,
+    },
+
+    location: {
+      type: String, // e.g., "Home", "Office", "Gym"
+      trim: true,
+    },
+
+    // ─────────────────────────────────────────────
+    // Enhanced Notes & Social
     // ─────────────────────────────────────────────
     moodNote: {
       type: String,
       trim: true,
-      maxlength: 500,
-      default: null,
+      maxlength: 50, // Increased for better journaling
     },
 
-    // ─────────────────────────────────────────────
-    // Mood Tags (Triggers or Activities)
-    // Example: ["work", "family", "exercise"]
-    // ─────────────────────────────────────────────
     tags: [
       {
         type: String,
         trim: true,
       },
-    ],
+    ], // e.g., ["family", "deadline"]
 
-    // ─────────────────────────────────────────────
-    // Date of Mood Entry
-    // ─────────────────────────────────────────────
+    // Metadata
     moodDate: {
       type: Date,
       default: Date.now,
       index: true,
     },
 
-    // ─────────────────────────────────────────────
-    // Privacy (Stealth Mode Support)
-    // ─────────────────────────────────────────────
     isPrivate: {
       type: Boolean,
       default: false,
@@ -93,7 +96,7 @@ const moodTrackingSchema = new mongoose.Schema(
   },
 );
 
-// Prevent multiple mood entries in the same day for the same user
-moodTrackingSchema.index({ userId: 1, moodDate: 1 });
+// We keep the index for fast querying by date and user
+moodTrackingSchema.index({ userId: 1, moodDate: -1 });
 
 module.exports = mongoose.model("MoodTracking", moodTrackingSchema);
