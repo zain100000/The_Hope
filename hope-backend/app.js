@@ -64,6 +64,7 @@ const superAdminRoute = require("./routes/super-admin-route/super-admin.route");
 const sharedPasswordResetRoute = require("./routes/shared-route/shared-password.reset.route");
 const userRoute = require("./routes/user-route/user.route");
 const moodRoute = require("./routes/mood-tracker-route/mood.tracker.route");
+const libraryRoute = require("./routes/information-library-route/information.library.route");
 
 // ==================================================
 // API Routes
@@ -72,6 +73,7 @@ app.use("/api/super-admin", superAdminRoute);
 app.use("/api/auth", sharedPasswordResetRoute);
 app.use("/api/user", userRoute);
 app.use("/api/mood", moodRoute);
+app.use("/api/library", libraryRoute);
 
 // ==================================================
 // MongoDB Connection + Server Start

@@ -1,4 +1,3 @@
-
 /**
  * @fileoverview Cloudinary image upload and deletion utilities
  * @module utilities/cloudinaryUtility
@@ -63,11 +62,12 @@ exports.upload = multer({
   limits: { fileSize: 10 * 1024 * 1024 }, // 10 MB
 }).fields([
   { name: "profilePicture", maxCount: 1 },
+  { name: "thumbnail", maxCount: 3 },
 ]);
 
 /**
  * Determine Cloudinary folder based on upload context
- * @param {string} type - "profilePicture" | "productImage"
+ * @param {string} type - "profilePicture" | "thumbnail"
  * @returns {string} Folder path under THE_HOPE/
  */
 const getFolderForUploadType = (type) => {
@@ -75,7 +75,10 @@ const getFolderForUploadType = (type) => {
 
   switch (type) {
     case "profilePicture":
-      return `${base}/profilePictures`;       
+      return `${base}/profilePictures`;
+
+    case "thumbnail":
+      return `${base}/informationLibraryThumbnails/thumbnails`;
     default:
       throw new Error(`Unsupported upload type: ${type}`);
   }
