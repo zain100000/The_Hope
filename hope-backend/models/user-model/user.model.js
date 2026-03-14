@@ -83,7 +83,7 @@ const userSchema = new mongoose.Schema(
     moodLogs: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "MoodLog",
+        ref: "MoodTracking",
       },
     ],
 

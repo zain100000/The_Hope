@@ -65,6 +65,7 @@ const sharedPasswordResetRoute = require("./routes/shared-route/shared-password.
 const userRoute = require("./routes/user-route/user.route");
 const moodRoute = require("./routes/mood-tracker-route/mood.tracker.route");
 const libraryRoute = require("./routes/information-library-route/information.library.route");
+const habitRoute = require("./routes/habit-tracker-route/habit.tracker.route");
 
 // ==================================================
 // API Routes
@@ -74,6 +75,7 @@ app.use("/api/auth", sharedPasswordResetRoute);
 app.use("/api/user", userRoute);
 app.use("/api/mood", moodRoute);
 app.use("/api/library", libraryRoute);
+app.use("/api/habit", habitRoute);
 
 // ==================================================
 // MongoDB Connection + Server Start

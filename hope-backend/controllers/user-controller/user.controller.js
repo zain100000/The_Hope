@@ -263,9 +263,17 @@ exports.loginUser = async (req, res) => {
  */
 exports.getUserById = async (req, res) => {
   try {
-    const user = await User.findById(req.params.userId).select(
-      "-password -__v",
-    );
+    const user = await User.findById(req.params.userId)
+      .select("-password -__v")
+      .populate({
+        path: "moodLogs",
+        options: { sort: { createdAt: -1 } }, // optional sorting
+      })
+
+      .populate({
+        path: "habits",
+        options: { sort: { createdAt: -1 } }, // optional sorting
+      });
 
     if (!user) {
       return res.status(404).json({
