@@ -96,4 +96,15 @@ router.post(
   userController.verifyEmail,
 );
 
+/**
+ * @description Toggle Stealth Mode for User Privacy
+ * @route   POST /api/user/stealth/toggle-stealth-mode
+ * @access  Private (User)
+ */
+router.post(
+  "/stealth/toggle-stealth-mode",
+  encryptedAuthMiddleware,
+  userController.toggleStealthMode,
+);
+
 module.exports = router;

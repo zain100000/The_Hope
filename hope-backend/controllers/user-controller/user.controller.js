@@ -594,3 +594,36 @@ exports.verifyEmail = async (req, res) => {
     });
   }
 };
+
+/**
+ * Toggle Stealth Mode for Privacy
+ * @access Private (User)
+ */
+exports.toggleStealthMode = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id);
+
+    if (!user) {
+      return res
+        .status(404)
+        .json({ success: false, message: "User not found" });
+    }
+
+    // Explicitly flip the specific field from your schema
+    // This ensures that if it's currently true, it becomes false, and vice versa.
+    user.isStealthModeEnabled = !user.isStealthModeEnabled;
+
+    await user.save();
+
+    res.status(200).json({
+      success: true,
+      message: user.isStealthModeEnabled
+        ? "Stealth Mode Activated"
+        : "Stealth Mode Deactivated",
+      isStealthModeEnabled: user.isStealthModeEnabled,
+    });
+  } catch (error) {
+    console.error("Stealth Toggle Error:", error);
+    res.status(500).json({ success: false, message: "Internal server error" });
+  }
+};
