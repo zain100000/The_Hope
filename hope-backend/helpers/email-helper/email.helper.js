@@ -300,7 +300,7 @@ exports.getEmailTemplate = (content, title = "THE HOPE") => `
     <tr><td align="center">
       <div class="container">
         <div class="header">
-          <img src="https://res.cloudinary.com/dd524q9vc/image/upload/v1773302419/THE_HOPE/logo/logo_gn9kup.png" alt="THE HOPE" class="logo" />
+          <img src="https://res.cloudinary.com/dd524q9vc/image/upload/v1773692689/THE_HOPE/logo/logo_mlyfhd.png" alt="THE HOPE" class="logo" />
           <h1 class="brand-title">THE HOPE</h1>
           <p class="brand-tagline">Nurturing minds, spreading hope</p>
         </div>
