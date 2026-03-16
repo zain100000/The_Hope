@@ -33,6 +33,13 @@ const allowedImageTypes = [
   "image/webp",
 ];
 
+const allowedVideoTypes = [
+  "video/mp4",
+  "video/mov",
+  "video/quicktime",
+  "video/webm",
+];
+
 /**
  * Multer file filter – only allow supported image types
  * @param {import('express').Request} req
@@ -44,11 +51,14 @@ const fileFilter = (req, file, cb) => {
     return cb(new Error("No file provided"), false);
   }
 
-  if (allowedImageTypes.includes(file.mimetype)) {
+  if (
+    allowedImageTypes.includes(file.mimetype) ||
+    allowedVideoTypes.includes(file.mimetype)
+  ) {
     return cb(null, true);
   }
 
-  cb(new Error("Invalid file type. Allowed: JPG, PNG, WEBP"), false);
+  cb(new Error("Invalid file type. Allowed: JPG, PNG, WEBP, MP4, MOV"), false);
 };
 
 /**
@@ -59,10 +69,13 @@ const fileFilter = (req, file, cb) => {
 exports.upload = multer({
   storage: multer.memoryStorage(),
   fileFilter,
-  limits: { fileSize: 10 * 1024 * 1024 }, // 10 MB
+  limits: { fileSize: 50 * 1024 * 1024 }, // 10 MB
 }).fields([
   { name: "profilePicture", maxCount: 1 },
   { name: "thumbnail", maxCount: 3 },
+
+  { name: "coverImage", maxCount: 1 },
+  { name: "video", maxCount: 1 },
 ]);
 
 /**
@@ -79,6 +92,12 @@ const getFolderForUploadType = (type) => {
 
     case "thumbnail":
       return `${base}/informationLibraryThumbnails/thumbnails`;
+
+    case "coverImage":
+      return `${base}/yogaGuides/coverImages`;
+
+    case "video":
+      return `${base}/yogaGuides/videos`;
     default:
       throw new Error(`Unsupported upload type: ${type}`);
   }
@@ -100,6 +119,10 @@ exports.uploadToCloudinary = async (file, type, existingPublicId = null) => {
 
   const folder = getFolderForUploadType(type);
 
+  const resourceType = allowedVideoTypes.includes(file.mimetype)
+    ? "video"
+    : "image";
+
   let publicId = existingPublicId;
 
   if (!publicId) {
@@ -109,12 +132,14 @@ exports.uploadToCloudinary = async (file, type, existingPublicId = null) => {
     publicId = `${folder}/${timestamp}-${random}.${ext}`;
   }
 
-  const fileBuffer = `data:${file.mimetype};base64,${file.buffer.toString("base64")}`;
+  const fileBuffer = `data:${file.mimetype};base64,${file.buffer.toString(
+    "base64",
+  )}`;
 
   try {
     const result = await cloudinary.uploader.upload(fileBuffer, {
       public_id: publicId,
-      resource_type: "image",
+      resource_type: resourceType,
       overwrite: true,
       invalidate: true,
     });
@@ -125,7 +150,7 @@ exports.uploadToCloudinary = async (file, type, existingPublicId = null) => {
     };
   } catch (err) {
     console.error("Cloudinary Upload Error:", err);
-    throw new Error("Failed to upload image to Cloudinary");
+    throw new Error("Failed to upload file to Cloudinary");
   }
 };
 
@@ -134,39 +159,46 @@ exports.uploadToCloudinary = async (file, type, existingPublicId = null) => {
  * @async
  * @param {string} [fileUrl] - Cloudinary secure_url (or empty/no-op)
  */
+/**
+ * Delete a file from Cloudinary using its secure_url
+ * @async
+ * @param {string} [fileUrl] - Cloudinary secure_url
+ */
 exports.deleteFromCloudinary = async (fileUrl) => {
   if (!fileUrl) return;
 
   try {
     const url = new URL(fileUrl);
     const pathParts = url.pathname.split("/").filter(Boolean);
-
     const uploadIndex = pathParts.indexOf("upload");
+
     if (uploadIndex === -1) return;
 
-    let afterUpload = pathParts.slice(uploadIndex + 1);
+    // 1. Identify if it's a video or image based on the URL path
+    // Cloudinary URLs usually look like .../video/upload/... or .../image/upload/...
+    const resourceType =
+      pathParts[uploadIndex - 1] === "video" ? "video" : "image";
 
-    // Skip version folder if present (v123456...)
+    let afterUpload = pathParts.slice(uploadIndex + 1);
     let startIndex = 0;
     if (afterUpload[0]?.startsWith("v") && !afterUpload[0].includes(".")) {
       startIndex = 1;
     }
 
     let publicId = afterUpload.slice(startIndex).join("/");
-
-    // Remove file extension
     if (publicId.includes(".")) {
       publicId = publicId.substring(0, publicId.lastIndexOf("."));
     }
 
-    console.log("Deleting Cloudinary public_id:", publicId);
+    console.log(`Deleting ${resourceType}:`, publicId);
 
+    // 2. Pass the specific resourceType instead of "auto"
     await cloudinary.uploader.destroy(publicId, {
-      resource_type: "image",
+      resource_type: resourceType,
       invalidate: true,
     });
 
-    console.log("Deleted:", publicId);
+    console.log("Successfully deleted:", publicId);
   } catch (err) {
     console.error("Cloudinary Deletion Error:", err.message);
   }

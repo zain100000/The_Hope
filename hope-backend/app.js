@@ -66,6 +66,7 @@ const userRoute = require("./routes/user-route/user.route");
 const moodRoute = require("./routes/mood-tracker-route/mood.tracker.route");
 const libraryRoute = require("./routes/information-library-route/information.library.route");
 const habitRoute = require("./routes/habit-tracker-route/habit.tracker.route");
+const yogaGuideRoute = require("./routes/yoga-guide-route/yoga.guide.route");
 
 // ==================================================
 // API Routes
@@ -76,6 +77,7 @@ app.use("/api/user", userRoute);
 app.use("/api/mood", moodRoute);
 app.use("/api/library", libraryRoute);
 app.use("/api/habit", habitRoute);
+app.use("/api/yoga", yogaGuideRoute);
 
 // ==================================================
 // MongoDB Connection + Server Start
