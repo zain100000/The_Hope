@@ -42,36 +42,10 @@ const Sidebar = () => {
   }, [dispatch, user?.id]);
 
   const navItems = [
-    { name: "Dashboard", path: "/super-admin", icon: "fas fa-home" },
     {
-      name: "Manage Orders",
-      path: "/super-admin/orders/manage-orders",
-      icon: "fas fa-shopping-bag",
-    },
-    {
-      name: "Manage Customers",
-      path: "/super-admin/users/manage-users",
-      icon: "fas fa-users",
-    },
-    {
-      name: "Manage Products",
-      path: "/super-admin/products/manage-products",
-      icon: "fas fa-box-open",
-    },
-    {
-      name: "Manage Stock",
-      path: "/super-admin/inventory/manage-inventory",
-      icon: "fas fa-warehouse",
-    },
-    {
-      name: "Manage Reviews",
-      path: "/super-admin/reviews/manage-reviews",
-      icon: "fas fa-star",
-    },
-    {
-      name: "Manage Tickets",
-      path: "/super-admin/support/manage-support-tickets",
-      icon: "fas fa-headset",
+      name: "Dashboard",
+      path: "/super-admin",
+      icon: "fas fa-home",
     },
   ];
 

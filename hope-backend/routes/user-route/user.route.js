@@ -107,4 +107,15 @@ router.post(
   userController.toggleStealthMode,
 );
 
+/**
+ * @description Get all users
+ * @route   GET /api/user/get-all-users
+ * @access  Private (Super Admin)
+ */
+router.get(
+  "/get-all-users",
+  encryptedAuthMiddleware,
+  userController.getAllUsers,
+);
+
 module.exports = router;

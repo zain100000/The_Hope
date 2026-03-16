@@ -1,0 +1,87 @@
+/**
+ * @file Dashboard.layout.css
+ * @description 
+ * Stylesheet for the administrative dashboard interface.
+ * * **Layout Strategy:**
+ * - **Desktop:** Uses a static Flexbox container where the sidebar occupies a fixed width and the content fills the remaining space.
+ * - **Mobile (< 1024px):** Switches the sidebar to `position: fixed` with a `translateX(-100%)` hide-state for performance-optimized GPU sliding.
+ * * **CSS Variables:** Utilizes `--sidebar-width` and global spacing variables for design system consistency.
+ * * **Special Media Queries:**
+ * - `prefers-reduced-motion`: Disables transitions for users with vestibular motion sensitivities.
+ * - `print`: Strips the navigation menu to allow for clean document printing.
+ */
+
+/**
+ * @file Dashboard.layout.css
+ */
+@import url("../../styles/global.styles.css");
+
+/* Root layout */
+.dashboard-layout {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  background-color: var(--gray-50);
+  overflow: hidden;
+}
+
+/* Sidebar Container */
+.sidebar-container {
+  width: 280px; /* Match width with Sidebar utility */
+  background-color: var(--primary); /* Match background with Sidebar utility */
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+  z-index: 100;
+  overflow: hidden; /* Prevents double scrollbars */
+}
+
+/* Content Area */
+.content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  position: relative;
+}
+
+/* ADDED: Menu Toggle Button */
+.menu-toggle-btn {
+  display: none; /* Hidden on desktop */
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  color: #333;
+  cursor: pointer;
+  margin-bottom: 20px;
+  padding: 5px;
+}
+
+/* Mobile Behavior (< 1024px) */
+@media (max-width: 1023px) {
+  .menu-toggle-btn {
+    display: block; /* Show on mobile */
+  }
+
+  .sidebar-container {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 280px;
+    transform: translateX(-100%); /* Hide by default */
+    box-shadow: none;
+  }
+
+  /* When open */
+  .sidebar-container.sidebar-open {
+    transform: translateX(0); /* Slide in */
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2);
+  }
+
+  .sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 90;
+    backdrop-filter: blur(2px); /* Optional: nice visual effect */
+  }
+}

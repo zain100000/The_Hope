@@ -627,3 +627,34 @@ exports.toggleStealthMode = async (req, res) => {
     res.status(500).json({ success: false, message: "Internal server error" });
   }
 };
+
+/**
+ * Get all Users
+ * @access Private(SuperAdmin)
+ */
+
+exports.getAllUsers = async (req, res) => {
+  try {
+    if (req.user.role !== "SUPERADMIN") {
+      return res.status(403).json({
+        success: false,
+        message: "Admin access required",
+      });
+    }
+
+    const users = await User.find();
+
+    res.status(200).json({
+      success: true,
+      message: "Users fetched successfully",
+      count: users.length,
+      allUsers: users,
+    });
+  } catch (error) {
+    console.error("Error fetching users:", error);
+    res.status(500).json({
+      success: false,
+      message: "Server Error",
+    });
+  }
+};

@@ -94,7 +94,7 @@ const Signin = () => {
         toast.success(successMessage);
 
         setTimeout(() => {
-          navigate("/super-admin/dashboard");
+          navigate("/super-admin");
         }, 2000);
 
         setEmail("");

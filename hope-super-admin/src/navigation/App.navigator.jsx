@@ -12,6 +12,13 @@
 
 import { Routes, Route } from "react-router-dom";
 
+// Outlet
+import DashboardLayout from "./outlet/Outlet.outlet";
+import ProtectedRoute from "./protected-routes/Protected.route";
+
+// Dashboard
+import Main from "../screens/dashboard/Main.dashboard";
+
 // Authentication
 import Signin from "../screens/auth/Signin/Signin.auth";
 import Signup from "../screens/auth/Signup/Signup.auth";
@@ -34,6 +41,22 @@ const AppNavigator = () => {
       <Route path="/auth/signup" element={<Signup />} />
       <Route path="/auth/forgot-password" element={<ForgotPassword />} />
       <Route path="/auth/reset-password" element={<ResetPassword />} />
+
+      {/* Protected Routes */}
+      <Route
+        path="/super-admin"
+        element={
+          <ProtectedRoute>
+            <DashboardLayout />
+          </ProtectedRoute>
+        }
+      >
+        {/* Make dashboard the index route for /super-admin */}
+        <Route index element={<Main />} />
+
+        {/* Dashboard Routes */}
+        <Route path="" element={<Main />} />
+      </Route>
 
       {/* Not Found Route */}
       <Route path="*" element={<NotFound />} />
