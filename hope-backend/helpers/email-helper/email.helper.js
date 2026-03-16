@@ -350,6 +350,7 @@ function getFrontendUrl(role) {
 
   switch (normalizedRole) {
     case "SUPERADMIN":
+    case "USER":
       if (!process.env.FRONTEND_URL) {
         throw new Error("FRONTEND_URL environment variable is not defined");
       }
