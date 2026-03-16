@@ -1,0 +1,127 @@
+/**
+ * @file Sidebar.utility.css
+ * @description 
+ * Styling for the Sidebar utility, focusing on depth and visual hierarchy.
+ * * **Key Styles:**
+ * - `.sidebar-link`: Implements an 18px border-radius to create the "pill-button" look.
+ * - `.sidebar-link.active`: Inverts the color scheme (white background with pink text) and adds a shadow for elevation.
+ * - `.sidebar-icon`: A 42px square container designed to standardize visual weight across various icon shapes.
+ * * **Interactions:**
+ * - Includes a subtle `translateX` hover effect for non-active items to provide tactile feedback.
+ */
+
+@import url("../../styles/global.styles.css");
+
+#sidebar {
+  width: 280px;
+  height: 100vh;
+  background: linear-gradient(180deg, var(--primary) 0%, var(--primary) 100%);
+  padding: 20px 18px;
+  z-index: 99;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+#sidebar .sidebar-header {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0 20px 0;
+}
+
+#sidebar .sidebar-logo-img {
+  width: auto;
+  height: 100%;
+  object-fit: contain;
+}
+
+#sidebar .sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  list-style: none;
+  gap: 14px;
+}
+
+#sidebar .sidebar-link {
+  display: flex;
+  align-items: center;
+  padding: 8px 14px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--white);
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.12);
+  transition: all 0.3s ease;
+}
+
+#sidebar .sidebar-icon {
+  width: 45px;
+  height: 45px;
+  min-width: 45px;
+  background: var(--white);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 18px;
+  color: #333;
+  font-size: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+#sidebar .link-text {
+  font-size: 14px;
+  letter-spacing: 0.3px;
+}
+
+#sidebar .sidebar-link:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+#sidebar .sidebar-link.active {
+  background: var(--white);
+  color: var(--primary);
+  font-weight: 600;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+#sidebar .sidebar-link.active .sidebar-icon {
+  background: var(--primary);
+  color: var(--white);
+  box-shadow: 0 4px 10px rgba(var(--primary-rgb), 0.4);
+}
+
+#sidebar .profile-container {
+  position: absolute;
+  bottom: 10px;
+}
+
+#sidebar .profile-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px) saturate(140%);
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  object-fit: contain;
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.25),
+    inset 0 1px 1px rgba(255, 255, 255, 0.35);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+#sidebar .profile-img:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 14px 40px rgba(0, 0, 0, 0.35),
+    inset 0 1px 1px rgba(255, 255, 255, 0.45);
+}

@@ -1,0 +1,87 @@
+/**
+ * @file global.styles.css
+ * @module Styles/Global
+ * @description 
+ * The project's central Design System and Theme configuration. 
+ * This file establishes a unified visual language through CSS Custom Properties.
+ * * **System Architecture:**
+ * - **Typography:** Implements the 'Inter' font family with a modular scale and responsive stepping.
+ * - **Color Palette:** Defines semantic tokens (Primary, Success, Error) and neutral scales.
+ * - **Layout Spacing:** Standardized spacing system (XS–XL) for consistent margins and padding.
+ * - **Surface Styles:** Global border-radius and shadow tokens for UI depth.
+ * - **Reset & Defaults:** Provides a modern CSS reset and sets base line-heights/aliasing.
+ * * **Responsive Logic:**
+ * - **Desktop (Default):** Base font size at 1rem.
+ * - **Tablet (<=1200px):** Scales base font down to --font-size-sm.
+ * - **Mobile (<=768px):** Scales base font down to --font-size-xs.
+ * * @requires Google Fonts (Inter)
+ */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+:root {
+  /* Typography */
+  --font-family: "Inter", sans-serif;
+
+  /* Color Palette */
+  --primary: #173e6a;
+  --secondary: #96cdc8;
+  --tertiary: #e0c582;
+  --success: #35f338;
+  --error: #f00221;
+  --white: #ffffff;
+  --dark: #000000;
+  --gray: #dde0e5;
+
+  /* Spacing System */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+
+  /* Typography Scale */
+  --font-size-xl: 2.5rem;
+  --font-size-lg: 1.125rem;
+  --font-size-base: 1rem;
+  --font-size-sm: 0.875rem;
+  --font-size-xs: 0.75rem;
+
+  /* Border Radius & Shadows */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  background-color: var(--white);
+  color: var(--dark);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Responsive Typography */
+@media (max-width: 1200px) {
+  body {
+    font-size: var(--font-size-sm);
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: var(--font-size-xs);
+  }
+}

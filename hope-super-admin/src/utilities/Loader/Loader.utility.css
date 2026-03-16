@@ -1,0 +1,40 @@
+/**
+ * @file Loader.utility.css
+ * @module Styles/Loader
+ * @description
+ * Defines the animation and structural styles for the circular spinner.
+ * * **Visuals:**
+ * - Uses a dual-border technique to create the "gap" effect for rotation.
+ * - Leverages CSS Keyframes for a smooth, continuous 360-degree spin.
+ * - Utilizes flexbox for perfect centering within its parent container.
+ * * @requires ../../styles/global.styles.css
+ * @animation spin - 1s linear infinite rotation.
+ */
+
+@import url("../../styles/global.styles.css");
+
+.custom-loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.custom-loader {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--white);
+  border-left-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

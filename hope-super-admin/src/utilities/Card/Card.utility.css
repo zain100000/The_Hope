@@ -1,0 +1,155 @@
+/**
+ * Dashboard Card Stylesheet
+ *
+ * Clean, modern dashboard stat card style matching the screenshot:
+ * - White background
+ * - Colored rounded icon badge on left
+ * - Gray subtitle, large black value, highlighted trend
+ * - Subtle shadow and hover lift
+ * - Entrance animation
+ */
+
+@import url("../../styles/global.styles.css");
+
+/* Card container */
+#card .card-container {
+  cursor: pointer;
+  display: flex;
+  perspective: 1000px;
+  margin: 12px;
+}
+
+/* Size variants */
+#card .card-container.small .custom-card {
+  max-width: 260px;
+  min-height: 140px;
+}
+
+#card .card-container.medium .custom-card {
+  max-width: 320px;
+  min-height: 160px;
+}
+
+#card .card-container.large .custom-card {
+  max-width: 380px;
+  min-height: 180px;
+}
+
+/* Base card */
+#card .custom-card {
+  width: 100%;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  padding: 24px;
+  opacity: 0;
+  transform: translateY(20px);
+  display: flex;
+  align-items: center;
+}
+
+#card .custom-card.mounted {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#card .with-hover .custom-card:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Focus state for accessibility */
+#card .card-container:focus {
+  outline: none;
+}
+
+#card .card-container:focus .custom-card {
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+}
+
+/* Inner layout */
+#card .card-inner {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+/* Icon badge */
+#card .icon-wrapper {
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+  flex-shrink: 0;
+}
+
+#card .card-icon {
+  font-size: 30px;
+  color: #ffffff;
+}
+
+/* Content area */
+#card .content-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centers content vertically within available space */
+  flex: 1;
+}
+
+#card .card-subtitle {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #6b7280;
+  margin: 0 0 8px 0;
+  line-height: 1.2;
+}
+
+#card .main-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 8px 0;
+  line-height: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #card .card-container {
+    margin: 8px;
+  }
+
+  #card .custom-card {
+    padding: 20px;
+  }
+
+  #card .icon-wrapper {
+    width: 52px;
+    height: 52px;
+    margin-right: 16px;
+  }
+
+  #card .card-icon {
+    font-size: 26px;
+  }
+
+  #card .main-value {
+    font-size: 2.125rem;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  #card .custom-card,
+  #card .with-hover .custom-card:hover {
+    transition: none;
+    transform: none;
+  }
+}
