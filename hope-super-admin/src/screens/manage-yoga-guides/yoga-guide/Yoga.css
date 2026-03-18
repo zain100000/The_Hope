@@ -1,0 +1,216 @@
+/**
+ * @file Yoga.css
+ * @description 
+ * Layout definitions for the Yoga Guide Management interface.
+ * Matches the structure of Yoga.jsx for the Super Admin dashboard.
+ */
+
+@import url("../../../styles/global.styles.css");
+
+#yoga-guides .yoga-guides-container {
+  padding: 20px;
+}
+
+#yoga-guides .yoga-guides-breadcrumb {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#yoga-guides .yoga-guides-title {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+#yoga-guides .yoga-guides-subtitle {
+  color: var(--dark);
+  margin-bottom: 25px;
+}
+
+#yoga-guides .stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+#yoga-guides .stat-card {
+  padding: 20px;
+  border-radius: 12px;
+  text-align: left;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
+#yoga-guides .stat-total {
+  background-color: var(--white);
+}
+
+#yoga-guides .stat-active {
+  background-color: #ebfbee;
+  border-color: #d3f9d8;
+}
+
+#yoga-guides .stat-inactive {
+  background-color: #fff5f5;
+  border-color: #ffe3e3;
+}
+
+#yoga-guides .stat-active .stat-value {
+  color: #2b8a3e;
+}
+
+#yoga-guides .stat-inactive .stat-value {
+  color: #c92a2a;
+}
+
+#yoga-guides .stat-card h3 {
+  font-size: 11px;
+  color: #666;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+#yoga-guides .stat-value {
+  font-size: 24px;
+  font-weight: 800;
+  margin: 0;
+  color: var(--dark);
+}
+
+#yoga-guides .btn-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 15px;
+}
+
+#yoga-guides .table-card {
+  background: var(--white);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--gray);
+}
+
+#yoga-guides .search-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+#yoga-guides .custom-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#yoga-guides .custom-table th {
+  padding: 15px;
+  border-bottom: 1px solid var(--gray);
+  color: var(--dark);
+  font-weight: 600;
+  text-align: left;
+}
+
+#yoga-guides .custom-table td {
+  padding: 15px;
+  border-bottom: 1px solid var(--gray);
+  vertical-align: middle;
+}
+
+#yoga-guides .guide-name {
+  max-width: 200px;
+  font-weight: 600;
+}
+
+#yoga-guides .status-badge.active {
+  background-color: #dcfce7;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+  padding: 6px 12px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+#yoga-guides .status-badge.inactive {
+  background-color: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+  padding: 6px 12px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+#yoga-guides .action-dots {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#yoga-guides .loader-container {
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+}
+
+#yoga-guides .no-guides-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+  gap: 12px;
+}
+
+#yoga-guides .no-guides-icon {
+  font-size: 48px;
+  opacity: 0.4;
+}
+
+#yoga-guides .no-guides-state h3 {
+  margin: 0;
+  font-weight: 600;
+}
+
+#yoga-guides .no-guides-state p {
+  margin: 0;
+  opacity: 0.6;
+  max-width: 320px;
+}
+
+@media (max-width: 768px) {
+  #yoga-guides .yoga-guides-breadcrumb {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #yoga-guides .search-wrapper {
+    width: 100%;
+    margin-top: 15px;
+  }
+
+  #yoga-guides .search-wrapper > div {
+    width: 100% !important;
+  }
+
+  #yoga-guides .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #yoga-guides .btn-container {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}

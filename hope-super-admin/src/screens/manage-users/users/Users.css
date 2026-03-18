@@ -1,0 +1,222 @@
+/**
+ * @file Users.css
+ * @description 
+ * Layout definitions for the Customer Management interface.
+ * Matches the structure of Users.jsx for the Super Admin dashboard.
+ */
+
+@import url("../../../styles/global.styles.css");
+
+#users .users-container {
+  padding: 20px;
+}
+
+#users .users-breadcrumb {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#users .users-title {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+#users .users-subtitle {
+  color: var(--dark);
+  margin-bottom: 25px;
+}
+
+#users .stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+#users .stat-card {
+  padding: 20px;
+  border-radius: 12px;
+  text-align: left;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
+#users .stat-total {
+  background-color: var(--white);
+}
+
+#users .stat-verified {
+  background-color: #ebfbee;
+  border-color: #d3f9d8;
+}
+
+#users .stat-unverified {
+  background-color: #fff5f5;
+  border-color: #ffe3e3;
+}
+
+#users .stat-verified .stat-value {
+  color: #2b8a3e;
+}
+#users .stat-unverified .stat-value {
+  color: #c92a2a;
+}
+
+#users .stat-card h3 {
+  font-size: 11px;
+  color: #666;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+#users .stat-value {
+  font-size: 24px;
+  font-weight: 800;
+  margin: 0;
+  color: var(--dark);
+}
+
+#users .btn-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 15px;
+}
+
+#users .table-card {
+  background: var(--white);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--gray);
+}
+
+#users .search-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+#users .custom-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#users .custom-table th {
+  padding: 15px;
+  border-bottom: 1px solid var(--gray);
+  color: var(--dark);
+  font-weight: 600;
+}
+
+#users .custom-table td {
+  padding: 15px;
+  border-bottom: 1px solid var(--gray);
+  vertical-align: middle;
+}
+
+#users .product-name {
+  max-width: 150px;
+}
+
+#users .user-email {
+  max-width: 190px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+#users .orders-count {
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--primary);
+  padding: 4px 20px;
+}
+
+#users .status-badge.verified {
+  background-color: #dcfce7;
+  color: #166534;
+  border: 2px solid #bbf7d0;
+  padding: 8px;
+  border-radius: 50px;
+}
+
+#users .status-badge.not-verified {
+  background-color: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+  padding: 8px;
+  border-radius: 50px;
+}
+
+#users .status-badge i {
+  font-size: 16px;
+}
+
+#users .action-dots {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: var(--dark);
+}
+
+#users .loader-container {
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+}
+
+#users .no-users-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+  gap: 12px;
+}
+
+#users .no-users-icon {
+  font-size: 48px;
+  opacity: 0.4;
+}
+
+#users .no-users-state h3 {
+  margin: 0;
+  font-weight: 600;
+}
+
+#users .no-products-state p {
+  margin: 0;
+  opacity: 0.6;
+  max-width: 320px;
+}
+
+@media (max-width: 768px) {
+  #users .users-breadcrumb {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #users .search-wrapper {
+    width: 100%;
+    margin-top: 15px;
+  }
+
+  #users .search-wrapper > div {
+    width: 100% !important;
+  }
+
+  #users .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #users .btn-container {
+    width: 100%;
+  }
+}

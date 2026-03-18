@@ -642,7 +642,8 @@ exports.getAllUsers = async (req, res) => {
       });
     }
 
-    const users = await User.find();
+    // Chain the populate methods for habits and moodLogs
+    const users = await User.find().populate("habits").populate("moodLogs");
 
     res.status(200).json({
       success: true,

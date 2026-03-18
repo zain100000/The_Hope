@@ -47,6 +47,24 @@ const Sidebar = () => {
       path: "/super-admin",
       icon: "fas fa-home",
     },
+
+    {
+      name: "Manage Users",
+      path: "/super-admin/users/manage-users",
+      icon: "fas fa-users",
+    },
+
+    {
+      name: "Manage Yoga Guide",
+      path: "/super-admin/yoga-guides/manage-guides",
+      icon: "fas fa-spa no-guides-icon",
+    },
+
+    {
+      name: "Manage Mental Wellness Articles",
+      path: "/super-admin/articles/manage-articles",
+      icon: "fas fa-newspaper",
+    },
   ];
 
   const profileMenuItems = [

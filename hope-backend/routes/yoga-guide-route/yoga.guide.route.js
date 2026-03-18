@@ -32,6 +32,16 @@ router.post(
 router.get("/get-all-yoga-guides", yogaGuideController.getAllYogaGuides);
 
 /**
+ * @description Get yoga guide
+ * @route   GET /api/yoga/get-yoga-guide-by-id/:yogaId
+ * @access  Public
+ */
+router.get(
+  "/get-yoga-guide-by-id/:yogaId",
+  yogaGuideController.getYogaGuideById,
+);
+
+/**
  * @description Update yoga guide
  * @route   PATCH /api/yoga/update-yoga-guide/:yogaId
  * @access  Private (SuperAdmin only)

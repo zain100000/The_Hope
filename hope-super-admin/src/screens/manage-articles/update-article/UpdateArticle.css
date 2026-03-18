@@ -1,0 +1,93 @@
+/**
+ * @file UpdateArticle.css
+ * @module Screens/Articles/UpdateArticle
+ * @description Styling for Super Admin - Update Article form
+ */
+
+@import url("../../../styles/global.styles.css");
+
+#update-article {
+  background: var(--bg-soft, #f8f9fc);
+  min-height: 100vh;
+}
+
+#update-article .container {
+  max-width: 1100px;
+}
+
+.update-header {
+  padding: 2.5rem 0 1.5rem;
+}
+
+.update-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary, #6f42c1);
+  letter-spacing: -0.5px;
+}
+
+.update-header p {
+  font-size: 1.15rem;
+  color: #6c757d;
+}
+
+.card.shadow-lg {
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08) !important;
+}
+
+.card-body {
+  padding: 2.5rem !important;
+}
+
+/* Labels & Inputs */
+.form-label {
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 0.5rem;
+}
+
+.form-select,
+.form-control {
+  border-radius: 8px;
+}
+
+.form-check-input {
+  width: 3rem;
+  height: 1.6rem;
+}
+
+/* Upload Zone */
+.upload-zone {
+  border: 2px dashed #cbd5e1;
+  border-radius: 12px;
+  padding: 3.5rem 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.22s ease;
+}
+
+.upload-zone:hover {
+  border-color: var(--primary);
+  background: rgba(111, 66, 193, 0.04);
+}
+
+/* Preview */
+.position-relative.rounded-3.overflow-hidden img {
+  height: 260px !important;
+  object-fit: cover;
+}
+
+/* Submit */
+.border-top.mt-5.pt-4 {
+  border-top: 1px solid #e5e7eb !important;
+}
+
+@media (max-width: 576px) {
+  .btn-lg {
+    width: 100% !important;
+  }
+}

@@ -89,7 +89,7 @@ exports.createArticle = async (req, res) => {
     res.status(201).json({
       success: true,
       message: "Article published successfully",
-      article,
+      newArticle: article,
     });
   } catch (error) {
     if (uploadedUrls.length > 0) {
@@ -107,6 +107,37 @@ exports.createArticle = async (req, res) => {
       success: false,
       message: "Failed to publish article",
       error: error.message,
+    });
+  }
+};
+
+
+/**
+ * Get single article details
+ * @param {string} articleId
+ * @access Public
+ */
+exports.getArticleById = async (req, res) => {
+  try {
+    const article = await InformationLibrary.findById(req.params.articleId);
+
+    if (!article) {
+      return res.status(404).json({
+        success: false,
+        message: "Article not found",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Article fetched successfully",
+      article,
+    });
+  } catch (error) {
+    console.error("Get article error:", error);
+    res.status(500).json({
+      success: false,
+      message: "Server Error",
     });
   }
 };

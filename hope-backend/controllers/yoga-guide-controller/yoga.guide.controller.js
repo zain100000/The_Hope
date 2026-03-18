@@ -95,7 +95,7 @@ exports.createYogaGuide = async (req, res) => {
     res.status(201).json({
       success: true,
       message: "Yoga guide created successfully",
-      yoga: yogaGuide,
+      newYogaGuide: yogaGuide,
     });
   } catch (error) {
     /* ---------------- CLEANUP CLOUDINARY ON FAILURE ---------------- */
@@ -118,7 +118,7 @@ exports.createYogaGuide = async (req, res) => {
 /**
  * Get all yoga guides with advanced filtering, search, and pagination
  * @access Public/Private (Depending on your app flow)
- * @route GET /api/yoga/get-all
+ * @route GET /api/yoga/get-all-yoga-guides
  */
 exports.getAllYogaGuides = async (req, res) => {
   try {
@@ -187,6 +187,37 @@ exports.getAllYogaGuides = async (req, res) => {
     });
   }
 };
+
+/**
+ * Get single product details
+ * @param {string} productId
+ * @access Public
+ */
+exports.getYogaGuideById = async (req, res) => {
+  try {
+    const yogaGuide = await Yoga.findById(req.params.yogaId)     
+
+    if (!yogaGuide) {
+      return res.status(404).json({
+        success: false,
+        message: "Yoga guide not found",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Yoga guide fetched successfully",
+      yogaGuide,
+    });
+  } catch (error) {
+    console.error("Get yoga guide error:", error);
+    res.status(500).json({
+      success: false,
+      message: "Server Error",
+    });
+  }
+};
+
 
 /**
  * Update an existing yoga guide

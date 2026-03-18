@@ -32,6 +32,17 @@ router.post(
 );
 
 /**
+ * @description Get article by id
+ * @route   GET /api/library/get-article-by-id/:articleId
+ * @access  Private (User)
+ */
+router.get(
+  "/get-article-by-id/:articleId",
+  encryptedAuthMiddleware,
+  libraryController.getArticleById,
+);
+
+/**
  * @description Update existing article
  * @route   PATCH /api/library/update-article/:articleId
  * @access  Private (Super Admin)
@@ -63,10 +74,7 @@ router.delete(
  * @route   GET /api/library/get-all
  * @access  Private (User)
  */
-router.get(
-  "/get-all-articles",
-  libraryController.getLibrary,
-);
+router.get("/get-all-articles", libraryController.getLibrary);
 
 /**
  * @description Get single article details by Slug

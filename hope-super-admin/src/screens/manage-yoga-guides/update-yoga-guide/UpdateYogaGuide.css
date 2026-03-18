@@ -1,0 +1,225 @@
+/**
+ * @file UpdateYogaGuide.css
+ * @module Screens/Yoga/UpdateYogaGuide
+ * @description Styling for Super Admin - Update Yoga Guide form
+ */
+
+@import url("../../../styles/global.styles.css");
+
+#update-yoga {
+  background: var(--bg-soft, #f8f9fc);
+  min-height: 100vh;
+}
+
+#update-yoga .container {
+  max-width: 1100px;
+}
+
+.update-header {
+  padding: 2.5rem 0 1.5rem;
+}
+
+.update-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary, #6f42c1);
+  letter-spacing: -0.5px;
+  margin-bottom: 0.5rem;
+}
+
+.update-header p {
+  font-size: 1.15rem;
+  color: #6c757d;
+  font-weight: 400;
+}
+
+.card.shadow-lg {
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* ── Form Body ──────────────────────────────────────────────── */
+.card-body {
+  padding: 2.5rem !important;
+}
+
+@media (max-width: 992px) {
+  .card-body {
+    padding: 1.75rem !important;
+  }
+}
+
+/* ── Labels ─────────────────────────────────────────────────── */
+.form-label {
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+/* ── Selects ────────────────────────────────────────────────── */
+.form-select {
+  padding: 0.65rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 0.95rem;
+  background-color: #fff;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.form-select:focus {
+  border-color: var(--primary, #6f42c1);
+  box-shadow: 0 0 0 0.25rem rgba(111, 66, 193, 0.15);
+  outline: none;
+}
+
+/* ── Instruction Steps ──────────────────────────────────────── */
+.instruction-wrapper {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+.instruction-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #f0f0f0;
+  position: relative;
+}
+
+.instruction-row.last-no-border {
+  border-bottom: none;
+}
+
+.step-number {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  background: var(--primary, #6f42c1);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+.instruction-row input {
+  flex: 1;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 0.65rem 1rem;
+  font-size: 0.95rem;
+}
+
+.instruction-row input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(111, 66, 193, 0.12);
+}
+
+/* ── Upload Zones ───────────────────────────────────────────── */
+.upload-zone {
+  border: 2px dashed #cbd5e1;
+  border-radius: 12px;
+  padding: 3.5rem 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  background: #ffffff;
+}
+
+.upload-zone:hover {
+  border-color: var(--primary, #6f42c1);
+  background: rgba(111, 66, 193, 0.04);
+}
+
+.upload-zone i {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  color: #94a3b8;
+}
+
+.upload-zone p {
+  font-weight: 500;
+  color: #475569;
+  margin-bottom: 0.35rem;
+}
+
+.upload-zone small {
+  color: #64748b;
+}
+
+/* Preview containers */
+.position-relative.rounded-3.overflow-hidden {
+  border-radius: 12px !important;
+}
+
+img.w-100.object-fit-cover {
+  object-position: center;
+  height: 240px !important;
+}
+
+/* Video placeholder area */
+.bg-light.rounded-3.p-4 {
+  border: 1px solid #e2e8f0;
+  min-height: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.bg-light.rounded-3 i.fa-video {
+  font-size: 3.2rem;
+  color: var(--primary);
+}
+
+/* ── Action Buttons ─────────────────────────────────────────── */
+.btn-outline-primary.btn-sm {
+  font-size: 0.85rem;
+  padding: 0.4rem 1rem;
+}
+
+.btn-danger.btn-sm.rounded-circle {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.9;
+  transition: opacity 0.2s;
+}
+
+.btn-danger.btn-sm.rounded-circle:hover {
+  opacity: 1;
+}
+
+/* ── Submit Area ────────────────────────────────────────────── */
+.border-top.mt-5.pt-4 {
+  border-top: 1px solid #e5e7eb !important;
+}
+
+@media (max-width: 576px) {
+  .btn-lg {
+    width: 100% !important;
+  }
+}
+
+/* ── Loading Spinner ────────────────────────────────────────── */
+.spinner-border {
+  width: 3.2rem;
+  height: 3.2rem;
+  border-width: 0.4em;
+}

@@ -1,0 +1,201 @@
+/**
+ * @file Articles.css
+ * @description 
+ * Layout definitions for the Articles Management interface.
+ * Matches the structure of Articles.jsx for the Super Admin dashboard.
+ */
+
+@import url("../../../styles/global.styles.css");
+
+#articles .articles-container {
+  padding: 20px;
+}
+
+#articles .articles-breadcrumb {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#articles .articles-title {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+#articles .articles-subtitle {
+  color: var(--dark);
+  margin-bottom: 25px;
+}
+
+#articles .stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+#articles .stat-card {
+  padding: 20px;
+  border-radius: 12px;
+  text-align: left;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
+#articles .stat-total {
+  background-color: var(--white);
+}
+
+#articles .stat-active {
+  background-color: #ebfbee;
+  border-color: #d3f9d8;
+}
+
+#articles .stat-active .stat-value {
+  color: #2b8a3e;
+}
+
+#articles .stat-card h3 {
+  font-size: 11px;
+  color: #666;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+#articles .stat-value {
+  font-size: 24px;
+  font-weight: 800;
+  margin: 0;
+  color: var(--dark);
+}
+
+#articles .btn-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 15px;
+}
+
+#articles .table-card {
+  background: var(--white);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--gray);
+}
+
+#articles .search-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+#articles .custom-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#articles .custom-table th {
+  padding: 15px;
+  border-bottom: 1px solid var(--gray);
+  color: var(--dark);
+  font-weight: 600;
+  text-align: left;
+}
+
+#articles .custom-table td {
+  padding: 15px;
+  border-bottom: 1px solid var(--gray);
+  vertical-align: middle;
+}
+
+#articles .article-name {
+  max-width: 200px;
+  font-weight: 600;
+}
+
+#articles .status-badge.active {
+  background-color: #dcfce7;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+  padding: 6px 12px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+#articles .status-badge.inactive {
+  background-color: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+  padding: 6px 12px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+#articles .action-dots {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#articles .loader-container {
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+}
+
+#articles .no-articles-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+  gap: 12px;
+}
+
+#articles .no-articles-icon {
+  font-size: 48px;
+  opacity: 0.4;
+}
+
+#articles .no-articles-state h3 {
+  margin: 0;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  #articles .articles-breadcrumb {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #articles .search-wrapper {
+    width: 100%;
+    margin-top: 15px;
+  }
+
+  #articles .search-wrapper > div {
+    width: 100% !important;
+  }
+
+  #articles .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #articles .btn-container {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
