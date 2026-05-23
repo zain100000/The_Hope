@@ -127,28 +127,9 @@ const EXPERTS = [
         details: 'Virtual Therapy and Psychological Consultation',
       },
     ],
-  },
+  }, 
   {
     id: '5',
-    title: 'Support Groups',
-    icon: 'account-group',
-    color: '#F59E0B',
-    subText: 'پیر سپورٹ گروپس',
-    subItems: [
-      {
-        id: 'g1',
-        title: 'Anxiety & Stress Support',
-        details: 'Weekly Peer Support Sessions',
-      },
-      {
-        id: 'g2',
-        title: 'Grief & Loss Support Group',
-        details: 'Emotional Healing Community',
-      },
-    ],
-  },
-  {
-    id: '6',
     title: 'Community Hubs',
     icon: 'home-heart', // Adjust to match your vector icon library (e.g., MaterialCommunityIcons)
     color: '#10B981',
