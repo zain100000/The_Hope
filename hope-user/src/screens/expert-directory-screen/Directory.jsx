@@ -105,12 +105,26 @@ const EXPERTS = [
       {
         id: 't1',
         title: 'Anxiety & Depression Specialists',
-        details: 'Licensed Therapists across Pakistan',
+        number: '0311-7786264', // Umang Pakistan Helpline
+        details: 'Licensed Therapists via Umang Support Network',
       },
       {
         id: 't2',
         title: 'Trauma & Family Counseling',
-        details: 'Professional Mental Health Experts',
+        number: '0304-111-1741', // Rozan Counseling Helpline
+        details: 'Professional Mental Health Experts (Rozan)',
+      },
+      {
+        id: 't3',
+        title: 'Online Video Consultations',
+        number: '0300-1003171', // Sehat Yab Helpline
+        details: 'Tele-psychiatry & Therapy Sessions via Sehat Yab',
+      },
+      {
+        id: 't4',
+        title: 'Affordable Virtual Counseling',
+        number: '0304-5905458', // Relieve Now
+        details: 'Virtual Therapy and Psychological Consultation',
       },
     ],
   },
@@ -130,6 +144,33 @@ const EXPERTS = [
         id: 'g2',
         title: 'Grief & Loss Support Group',
         details: 'Emotional Healing Community',
+      },
+    ],
+  },
+  {
+    id: '6',
+    title: 'Community Hubs',
+    icon: 'home-heart', // Adjust to match your vector icon library (e.g., MaterialCommunityIcons)
+    color: '#10B981',
+    subText: 'کمیونٹی سپورٹ نیٹ ورکس',
+    subItems: [
+      {
+        id: 'h1',
+        title: 'Embrace Mental Health Hub',
+        number: '0331-7777784', // Saving 9 "Embrace" Initiative
+        details: 'Community-led crisis intervention & ambulance service',
+      },
+      {
+        id: 'h2',
+        title: 'Youth Help Line Network',
+        number: '0800-44488', 
+        details: 'Community resources and counseling for adolescents',
+      },
+      {
+        id: 'h3',
+        title: 'Punjab Youth Helpline',
+        number: '0800-12145',
+        details: 'Emotional & psychological guidance for local youth communities',
       },
     ],
   },
