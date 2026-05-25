@@ -37,6 +37,7 @@ import BottomNavigator from '../navigation/bottom-navigator/BottomNavigator';
 //Profile & Sub-screens
 import MyProfile from '../screens/profile-screen/sub-screens/MyProfile';
 import About from '../screens/profile-screen/sub-screens/About';
+import EmailVerification from '../screens/profile-screen/sub-screens/EmailVerification';
 
 // Mood Tracking Screens
 import CreateMood from '../screens/mood-tracker-screen/CreateMood/CreateMood';
@@ -127,6 +128,15 @@ const AppNavigator = () => {
 
         <Stack.Screen name="About_Us">
           {props => <About {...props} setStatusBarColor={setStatusBarColor} />}
+        </Stack.Screen>
+
+        <Stack.Screen name="Email_Verification">
+          {props => (
+            <EmailVerification
+              {...props}
+              setStatusBarColor={setStatusBarColor}
+            />
+          )}
         </Stack.Screen>
 
         {/* --- MOOD TRACKING SCREENS --- */}

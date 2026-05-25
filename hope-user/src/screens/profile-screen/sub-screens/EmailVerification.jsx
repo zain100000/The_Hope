@@ -106,7 +106,7 @@ const EmailVerification = () => {
           text1: 'Account Verified',
           text2: resultAction.payload?.message,
         });
-        navigation.goBack();
+        navigation.replace('Main');
       } else if (verifyEmail.rejected.match(resultAction)) {
         Toast.show({
           type: 'error',
@@ -166,10 +166,16 @@ const EmailVerification = () => {
         style={styles.flex}
       >
         <View style={styles.headerContainer}>
-          <Header
-            logo={require('../../../assets/logo/logo.png')}
-            title="Email Verification"
-          />
+           <Header
+          showTopRow={false}
+          showLogo={true}
+          showAvatar={false}
+          showGreeting={false}
+          showTitle={true}
+          title={'Email Verification'}
+          logo={require('../../../assets/logo/logo.png')}
+          showSearch={false}
+        />
         </View>
 
         <ScrollView
